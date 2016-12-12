@@ -1,0 +1,48 @@
+<div class="container" ng-controller="MyInfoController as myInfoCtrl">
+  <div ng-if="myInfoCtrl.signedUp">
+    <h1>My INFO </h1>
+    <table id="my-info">
+      <tbody>
+        <tr>
+          <td>Full Name:</td>
+          <td>{{ myInfoCtrl.myinfo.firstname }} {{ myInfoCtrl.myinfo.lastname }}</td>
+        </tr>
+        <tr>
+          <td>Email Address:</td>
+          <td> {{ myInfoCtrl.myinfo.email }}</td>
+        </tr>
+        <tr>
+          <td>Phone Number:</td>
+          <td>{{ myInfoCtrl.myinfo.phone }}</td>
+        </tr>
+        <tr>
+          <td>Favorite Menu Number:</td>
+          <td>{{ myInfoCtrl.myinfo.menuNumber }}</td>
+        </tr>
+        <tr>
+          <td>Favorite Menu Name:</td>
+          <td>{{ myInfoCtrl.item.name }}</td>
+        </tr>
+        <tr>
+          <td>Menu Description:</td>
+          <td>{{ myInfoCtrl.item.description }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="col-md-3 col-sm-4 col-xs-6 col-xxs-12">
+      <a ui-sref="public.menuitems({category: myInfoCtrl.myinfo.menuNumber})">
+        <div class="category-tile">
+          <img width="200" height="200" ng-src="https://sajjanbh-course5.herokuapp.com/images/{{myInfoCtrl.myinfo.menuNumber}}.jpg" alt="{{myInfoCtrl.item.name}}">
+          <span>{{myInfoCtrl.item.name}}</span>
+        </div>
+      </a>
+    </div>
+  </div>
+  <span ng-if="!myInfoCtrl.signedUp">
+    Not Signed Up yet!
+    <a ui-sref="public.signup">
+      <span>Sign Up now </span>
+    </a>
+  </span>
+</div>
